@@ -1,20 +1,23 @@
-import { useState } from "react";
+import { useState } from "react"
+import { useOutletContext } from "react-router-dom"
 
 function Login() {
+  const login = useOutletContext()
   const [formData, setFormData] = useState({
     username: "",
     password: "",
-  });
+  })
 
   function handleChange(e) {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    });
+    })
   }
 
   function handleLogin(e) {
-    e.preventDefault();
+    e.preventDefault()
+    login()
   }
 
   return (
@@ -37,11 +40,11 @@ function Login() {
           name="password"
           value={formData.password}
           onChange={handleChange}
-        />      
+        />
       </div>
       <button type="submit">Login</button>
     </form>
-  );
+  )
 }
 
-export default Login;
+export default Login
